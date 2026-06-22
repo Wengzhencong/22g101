@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>22G101视频播放</title>
+<title>22G101</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 body{background:#000;color:#fff;font-family:sans-serif;display:flex;align-items:center;justify-content:center;min-height:100vh}
@@ -17,8 +17,11 @@ const params=new URLSearchParams(location.search);
 const f=params.get('f');
 if(f){
   const v=document.getElementById('v');
-  v.src=f;
-  v.poster='';
+  if(f.startsWith('http')){
+    v.src=f;
+  } else {
+    v.src='https://raw.githubusercontent.com/Wengzhencong/22g101/main/'+f;
+  }
   document.title=decodeURIComponent(f.split('/').pop().replace('.mp4',''));
 }
 </script>
